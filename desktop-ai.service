@@ -1,0 +1,14 @@
+[Unit]
+Description=Desktop AI Inference Engine (llama-server)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/desktop-ai-engine
+ExecStart=%h/desktop-ai-engine/start-server.sh
+Restart=on-failure
+RestartSec=5s
+Environment="PATH=/usr/local/cuda/bin:/usr/bin:/bin:%h/.local/bin"
+
+[Install]
+WantedBy=default.target
